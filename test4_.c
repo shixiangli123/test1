@@ -9,29 +9,34 @@ int main()
 	printf("%d %d\n", m, n);
 	int* a;
 	a = (int*)malloc(sizeof(int) * m);
-	int i,num=n-m,en=0;//numÊÇ×î¿ªÊ¼Ã»Õ¼µ½È¡¼ş»úµÄÈË
-	for (i = 0; i < m; i++)
-	{
-		scanf("%d", &a[i]);	
-	}
-	while (1)
+	int i,num=n-m,en=0;//numæ˜¯æœ€å¼€å§‹æ²¡å åˆ°å–ä»¶æœºçš„äºº
+	if (m < n)
 	{
 		for (i = 0; i < m; i++)
 		{
-			a[i]--;
-			if (a[i] == 0 && num > 0)
+			scanf("%d", &a[i]);
+		}
+		while (1)
+		{
+			for (i = 0; i < m; i++)
 			{
-				scanf("%d", &a[i]);
-				num--;//Ç°Ãæ¿Õ³öµÄÎ»ÖÃÓÉºóÃæÅÅ¶ÓµÄÈË½ÓÉÏ£¬ÈËÊıÉÙ1
-			}
-			if (a[i] ==0)
-				en++;//ÓĞÒ»¸ö»ú×Ó³¹µ×Ã»ÈËÅÅÁË
-		}//Ò»Ãë¹ıÈ¥
-		time++;
-		if (en == m)
-			break;
+				a[i]--;
+				if (a[i] == 0 && num > 0)
+				{
+					scanf("%d", &a[i]);
+					num--;//å‰é¢ç©ºå‡ºçš„ä½ç½®ç”±åé¢æ’é˜Ÿçš„äººæ¥ä¸Šï¼Œäººæ•°å°‘1
+				}
+				if (a[i] == 0)
+					en++;//æœ‰ä¸€ä¸ªæœºå­å½»åº•æ²¡äººæ’äº†
+			}//ä¸€ç§’è¿‡å»
+			time++;
+			if (en == m)
+				break;
+		}
+		printf("%d\n", time);
 	}
-	printf("%d\n", time);
+	else
+		printf("1\n");
 	free(a);
 	return 0;
 }
