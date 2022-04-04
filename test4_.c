@@ -10,7 +10,7 @@ int main()
 	int* a;
 	a = (int*)malloc(sizeof(int) * m);
 	int i,num=n-m,en=0;//num是最开始没占到取件机的人
-	if (m < n)
+	if (m < n)//人比机子多
 	{
 		for (i = 0; i < m; i++)
 		{
@@ -35,8 +35,22 @@ int main()
 		}
 		printf("%d\n", time);
 	}
-	else
-		printf("1\n");
+	else//每人都有机子
+	{
+		int* c;
+		c = (int*)malloc(sizeof(int) * n);//n个人的快递数分别放进数组里，求出最大值
+		for (i = 0; i < n; i++)
+		{
+			scanf("%d", &c[i]);
+		}
+		int x = c[0];
+		for (i = 0; i < n - 1; i++)
+		{
+			x = x > c[i + 1] ? x : c[i + 1];
+		}
+		printf("%d\n", x);
+	}
+	
 	free(a);
 	return 0;
 }
